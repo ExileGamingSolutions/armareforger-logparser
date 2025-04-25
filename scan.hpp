@@ -5,7 +5,7 @@
 #include <sstream>
 
 std::string filePath = "test.txt";
-std::ifstream read(filePath);
+std::ifstream read;
 std::fstream write;
 std::string x;
 std::string a;

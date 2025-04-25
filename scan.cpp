@@ -14,14 +14,18 @@ int main() {
     std::cout << "CANNOT OPEN FILE\n";
     return 101;
   };
-  
-  
-  while (std::getline(read, a,'\a')) {
-   read >> a;  
-     std::cout << a << std::endl;
 
-   for(int i = 0; i < 20; i++){
-   
-   }
+  std::getline(read, a, '\13');
+  // read >> x;
+  int v = 0;
+  for (int i = 0; i < a.length(); i++) {
+    if (a[i] != '\n' && v == 0) {
+      x.push_back(a[i]);
+
+    } else {
+      logLines.push_back(x);
+      x.erase();
+    }
   }
+  std::cout << logLines.size() << std::endl;
 }

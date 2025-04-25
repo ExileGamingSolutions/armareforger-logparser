@@ -15,11 +15,11 @@ int main() {
     return 101;
   };
 
-  std::getline(read, a, '\13');
-  // read >> x;
+  std::getline(read, a,'\n');
   int v = 0;
   for (int i = 0; i < a.length(); i++) {
-    if (a[i] != '\n' && v == 0) {
+    // figure this out later lol.....  v==1 ??
+    if (a[i] != '\n' && v == 1 ) {
       x.push_back(a[i]);
 
     } else {
@@ -27,5 +27,5 @@ int main() {
       x.erase();
     }
   }
-  std::cout << logLines.size() << std::endl;
+  read.close();
 }

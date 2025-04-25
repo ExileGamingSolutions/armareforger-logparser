@@ -1,6 +1,6 @@
 #include "scan.hpp"
 
-int main() {
+ scan::scan() : ss(x){
 
   try {
     read.open("test.txt");
@@ -12,7 +12,6 @@ int main() {
 
   } catch (...) {
     std::cout << "CANNOT OPEN FILE\n";
-    return 101;
   };
 
   std::getline(read, a,'\n');

@@ -6,7 +6,6 @@ class parseSort {
 public:
   parseSort();
   void filter(std::vector<std::string> param) {};
-  std::vector<std::string> unParsedLog;
 
   // categories
   std::vector<std::string> resourses;

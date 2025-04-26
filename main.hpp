@@ -2,4 +2,5 @@
 #include "scan.hpp"
 
 scan _scan;
-parseSort _parseSort(_scan.logLines);
+parseSort _parseSort;
+std::vector<std::string> unParsedLogs;

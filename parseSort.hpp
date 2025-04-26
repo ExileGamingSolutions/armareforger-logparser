@@ -4,8 +4,7 @@
 class parseSort {
 
 public:
-  parseSort();
-  void filter(std::vector<std::string> param) {};
+   void filter(std::vector<std::string> param) {};
 
   // categories
   std::vector<std::string> resourses;

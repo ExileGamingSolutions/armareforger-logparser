@@ -1,7 +1,6 @@
 #include "parseSort.hpp"
 
-parseSort::parseSort() {};
-void parseSort::filter(std::vector<std::string> param) {
+ void parseSort::filter(std::vector<std::string> param) {
   std::string a;
   std::stringstream ss(a);
   for (int i = 0; i < param.size(); i++) {

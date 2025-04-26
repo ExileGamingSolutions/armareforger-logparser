@@ -6,7 +6,6 @@
 #include <vector>
 class scan{
 public:
-scan();
 void readFile();
 std::vector<std::string> getLog();
 std::string filePath = "test.txt";

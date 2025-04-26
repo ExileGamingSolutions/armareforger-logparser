@@ -1,7 +1,8 @@
 #include "scan.hpp"
 
  scan::scan() : ss(x){
-
+ }
+void scan::readFile(){
   try {
     read.open("test.txt");
 
@@ -27,4 +28,7 @@
     }
   }
   read.close();
+}
+std::vector<std::string> scan::getLog(){
+  return logLines;
 }

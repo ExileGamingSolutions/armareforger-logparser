@@ -7,6 +7,8 @@
 class scan{
 public:
 scan();
+void readFile();
+std::vector<std::string> getLog();
 std::string filePath = "test.txt";
 std::ifstream read;
 std::fstream write;

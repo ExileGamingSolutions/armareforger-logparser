@@ -1,9 +1,8 @@
 #include "scan.hpp"
-
-
-void scan::readFile(){
+ void scan::readFile(std::string file){
+  std::stringstream ss(x);
   try {
-    read.open("test.txt");
+    read.open(file);
 
     if (read.fail())
       throw(1);
@@ -14,11 +13,11 @@ void scan::readFile(){
     std::cout << "CANNOT OPEN FILE\n";
   };
 
-  std::getline(read, a,'\n');
+  std::getline(read, a,'\000');
   int v = 0;
   for (int i = 0; i < a.length(); i++) {
     // figure this out later lol.....  v==1 ??
-    if (a[i] != '\n' && v == 1 ) {
+    if (a[i] != '\n' && v != 1 ) {
       x.push_back(a[i]);
 
     } else {
@@ -27,6 +26,7 @@ void scan::readFile(){
     }
   }
   read.close();
+ 
 }
 std::vector<std::string> scan::getLog(){
   return logLines;

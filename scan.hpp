@@ -6,7 +6,7 @@
 #include <vector>
 class scan{
 public:
-void readFile();
+void readFile(std::string file);
 std::vector<std::string> getLog();
 std::string filePath = "test.txt";
 std::ifstream read;
@@ -15,6 +15,5 @@ std::string x;
 std::string a;
 std::vector<std::string> logLines;
 
-std::stringstream ss;
 };
 

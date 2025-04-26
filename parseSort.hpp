@@ -1,10 +1,11 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <iostream>
 class parseSort {
 
 public:
-   void filter(std::vector<std::string> param) {};
+   void filter(std::vector<std::string> param);
 
   // categories
   std::vector<std::string> resourses;
@@ -21,6 +22,7 @@ public:
   std::vector<std::string> platform;
 
   enum _sortedLine {
+    _NULL,
     RESOURSES,
     ENGINE,
     INIT,

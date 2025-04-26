@@ -4,8 +4,8 @@
 class parseSort {
 
 public:
-  parseSort(std::vector<std::string> param);
-  void filter() {};
+  parseSort();
+  void filter(std::vector<std::string> param) {};
   std::vector<std::string> unParsedLog;
 
   // categories

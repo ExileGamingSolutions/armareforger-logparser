@@ -1,12 +1,12 @@
 #include "parseSort.hpp"
 
-parseSort::parseSort(std::vector<std::string> param) { unParsedLog = param; };
-void parseSort::filter() {
+parseSort::parseSort() {};
+void parseSort::filter(std::vector<std::string> param) {
   std::string a;
   std::stringstream ss(a);
-  for (int i = 0; i < unParsedLog.size(); i++) {
+  for (int i = 0; i < param.size(); i++) {
     parseSort::_sortedLine _selected;
-    std::string placeH = unParsedLog[i];
+    std::string placeH = param[i];
     if (placeH.find("RESOURSES") && !_selected)
       _selected = RESOURSES;
     if (placeH.find("ENGINE") && !_selected)
@@ -34,49 +34,49 @@ void parseSort::filter() {
    switch(_selected){
     default: break;
     case RESOURSES: 
-    resourses.push_back(unParsedLog[i]);
+    resourses.push_back(param[i]);
     break;
      case  ENGINE: 
-         engine.push_back(unParsedLog[i]);
+         engine.push_back(param[i]);
 
     break;
      case  INIT: 
-    init.push_back(unParsedLog[i]);
+    init.push_back(param[i]);
 
     break;
      case  GUI: 
-    gui.push_back(unParsedLog[i]);
+    gui.push_back(param[i]);
 
     break;
      case  PROFILING: 
-    profiling.push_back(unParsedLog[i]);
+    profiling.push_back(param[i]);
     break;
      case  SCRIPT:
-    script.push_back(unParsedLog[i]);
+    script.push_back(param[i]);
  
     break;
      case  BACKEND: 
-    backend.push_back(unParsedLog[i]);
+    backend.push_back(param[i]);
 
     break;
      case  DEF: 
-    def.push_back(unParsedLog[i]);
+    def.push_back(param[i]);
 
     break;
      case  WORLD: 
-    world.push_back(unParsedLog[i]);
+    world.push_back(param[i]);
 
     break;
      case  RENDER: 
-    render.push_back(unParsedLog[i]);
+    render.push_back(param[i]);
 
     break;
      case  NETWORK: 
-    network.push_back(unParsedLog[i]);
+    network.push_back(param[i]);
 
     break;
      case  PLATFORM: 
-    platform.push_back(unParsedLog[i]);
+    platform.push_back(param[i]);
 
     break;
   }

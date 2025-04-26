@@ -14,10 +14,9 @@
   };
 
   std::getline(read, a,'\000');
-  int v = 0;
   for (int i = 0; i < a.length(); i++) {
     // figure this out later lol.....  v==1 ??
-    if (a[i] != '\n' && v != 1 ) {
+    if (a[i] != '\n' ) {
       x.push_back(a[i]);
 
     } else {

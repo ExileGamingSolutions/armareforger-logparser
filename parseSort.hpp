@@ -1,6 +1,6 @@
+#include <sstream>
 #include <string>
 #include <vector>
-#include <sstream>
 class parseSort {
 
 public:
@@ -21,5 +21,21 @@ public:
   std::vector<std::string> render;
   std::vector<std::string> network;
   std::vector<std::string> platform;
+
+  enum _sortedLine {
+    RESOURSES,
+    ENGINE,
+    INIT,
+    GUI,
+    PROFILING,
+    SCRIPT,
+    BACKEND,
+    DEF,
+    WORLD,
+    RENDER,
+    NETWORK,
+    PLATFORM
+
+  };
   // TODO: monitoring
 };

@@ -4,6 +4,7 @@
 #include <string>
 #include <sstream>
 #include <vector>
+#include <cstdio>
 class scan{
 public:
 void readFile(std::string file);

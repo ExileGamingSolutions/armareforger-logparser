@@ -38,5 +38,9 @@ monitoring::selectFile(std::vector<std::filesystem::path> dirContents) {
         newestFile = dirContents[i];
     }
   }
+  currentPath = newestFile;
   return newestFile;
 }
+std::string monitoring::getPath(){
+    return currentPath.string();
+} 

@@ -5,12 +5,13 @@
 class monitoring{
 public:
 void watcher();
-void pickFile();
+void fileList();
 void setDirectory(std::string PATH);
 std::string getDirectory();
 private:
-std::string fileDirectory;
-std::filesystem::directory_entry d;
+std::string _fileDirectory;
+std::filesystem::directory_entry _d;
+std::vector<std::filesystem::path> _dirContents;
 
 
 };

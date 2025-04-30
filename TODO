@@ -2,3 +2,4 @@ detail processes
 log watchdog
 figure out how to effectivly remove file contents to ensure no duplicate entries
 socket or unix... to communicate with discord bots or webhook 
+list dir contents via file system dir iterator

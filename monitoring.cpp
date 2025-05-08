@@ -16,6 +16,8 @@ void monitoring::watcher() {
     // wait 5 minutes before checking again
     std::this_thread::sleep_for(std::chrono::seconds(300));
     watcher();
+  } else {
+    currentPath = selectFile(_dirContents);
   };
 }
 void monitoring::fileList() {

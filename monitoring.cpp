@@ -10,7 +10,14 @@ std::filesystem::path _compareFileDate(std::filesystem::path path1,
   (time1 < time2) ? selected = path1 : selected = path2;
   return selected;
 }
-void monitoring::watcher() {}
+// this functions should be continously ran to check for directory changes
+void monitoring::watcher() {
+  if (selectFile(_dirContents) != currentPath) {
+    // wait 5 minutes before checking again
+    std::this_thread::sleep_for(std::chrono::seconds(300));
+    watcher();
+  };
+}
 void monitoring::fileList() {
   for (const auto &entry :
        std::filesystem::directory_iterator(_fileDirectory)) {
@@ -38,9 +45,6 @@ monitoring::selectFile(std::vector<std::filesystem::path> dirContents) {
         newestFile = dirContents[i];
     }
   }
-  currentPath = newestFile;
   return newestFile;
 }
-std::string monitoring::getPath(){
-    return currentPath.string();
-} 
+std::string monitoring::getPath() { return currentPath.string(); }

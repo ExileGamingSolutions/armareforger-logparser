@@ -2,16 +2,19 @@
 #include <fstream>
 #include <iostream>
 #include <thread>
+#include <vector>
 
 class monitoring {
 public:
   void watcher();
   void fileList();
   void setDirectory(std::string PATH);
-  std::filesystem::path selectFile(std::vector<std::filesystem::path> dirContents);
+  std::filesystem::path
+  selectFile(std::vector<std::filesystem::path> dirContents);
   std::string getDirectory();
   std::string getPath();
   std::vector<std::filesystem::path> getDirContents();
+
 private:
   std::filesystem::path _compareFileDate(std::filesystem::path path1,
                                          std::filesystem::path path2);

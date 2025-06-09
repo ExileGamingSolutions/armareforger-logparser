@@ -1,4 +1,4 @@
-#include "include/sub/scan.hpp"
+#include "sub/scan.hpp"
 void scan::readFile(std::string file) {
   std::stringstream ss(x);
   try {

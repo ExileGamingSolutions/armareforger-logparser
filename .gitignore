@@ -30,6 +30,8 @@
 *.exe
 *.out
 *.app
-
+#others 
+*.json
 #folders
+cmake/
 .vscode/

@@ -1,5 +1,5 @@
-#include "parseSort.cpp"
-#include "scan.cpp"
+#include "sub/parseSort.cpp"
+#include "sub/scan.cpp"
 
 scan _scan;
 parseSort _parseSort;

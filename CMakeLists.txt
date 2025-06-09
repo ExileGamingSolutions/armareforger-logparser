@@ -6,3 +6,5 @@ file(GLOB_RECURSE sources "${CMAKE_SOURCE_DIR}/src/main/*.c"
      "${CMAKE_SOURCE_DIR}/src/main/*.cpp")
 add_definitions(-DSOME_DEFINITION)
 add_executable(armareforger-logparser ${sources})
+target_include_directories(armareforger-logparser
+                           PRIVATE "${CMAKE_SOURCE_DIR}/src/include/")

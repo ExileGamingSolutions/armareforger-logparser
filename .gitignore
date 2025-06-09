@@ -32,6 +32,8 @@
 *.app
 #others 
 *.json
+*.idx
 #folders
 cmake/
 .vscode/
+.cache/

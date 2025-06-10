@@ -12,4 +12,7 @@ class sock {
 
   char *message;
   void setMessage(std::string message);
+  int connectToServer();
+  int sendToServer();
+  int closeServerConnect();
 };

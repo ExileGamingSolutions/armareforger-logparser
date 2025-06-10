@@ -10,7 +10,9 @@ class sock {
 
   sockaddr_in server;
 
-  char *message;
+  char *Message;
+
+public:
   void setMessage(std::string message);
   int connectToServer();
   int sendToServer();

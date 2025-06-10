@@ -1,6 +1,12 @@
+
+
 #include "sub/sock.hpp"
 
-void sock::setMessage(std::string message) { Message = message.data(); }
+void sock::setMessage(std::string message) {
+
+  message = "test";
+  Message = message.data();
+}
 
 int sock::connectToServer() {
 

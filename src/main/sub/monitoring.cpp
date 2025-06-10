@@ -1,5 +1,5 @@
 #include "sub/monitoring.hpp"
-
+/*
 std::filesystem::path _compareFileDate(std::filesystem::path path1,
                                        std::filesystem::path path2) {
   std::filesystem::file_time_type time1 =
@@ -49,4 +49,4 @@ monitoring::selectFile(std::vector<std::filesystem::path> dirContents) {
   }
   return newestFile;
 }
-std::string monitoring::getPath() { return currentPath.string(); }
+std::string monitoring::getPath() { return currentPath.string(); }*/

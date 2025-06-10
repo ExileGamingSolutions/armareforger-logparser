@@ -33,6 +33,7 @@
 #others 
 *.json
 *.idx
+test.text
 #folders
 cmake/
 .vscode/

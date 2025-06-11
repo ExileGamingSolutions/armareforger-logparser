@@ -3,9 +3,8 @@
 #include "sub/sock.hpp"
 
 void sock::setMessage(std::string message) {
-
-  message = "test";
-  Message = message.data();
+  char *buffer = "vvvcdsbvfdscdsccccccccccccccccccccccccccccccccccc";
+  Message = buffer;
 }
 
 int sock::connectToServer() {

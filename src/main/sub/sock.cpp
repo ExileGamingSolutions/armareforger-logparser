@@ -2,10 +2,7 @@
 
 #include "sub/sock.hpp"
 
-void sock::setMessage(std::string message) {
-  char *buffer = "vvvcdsbvfdscdsccccccccccccccccccccccccccccccccccc";
-  Message = buffer;
-}
+void sock::setMessage(std::string message) { Message = message; }
 
 int sock::connectToServer() {
 
@@ -21,7 +18,7 @@ int sock::connectToServer() {
 }
 int sock::sendToServer() {
 
-  if (send(link, Message, strlen(Message), 0) != -1) {
+  if (send(link, Message.c_str(), Message.size(), 0) != -1) {
     return 1;
   } else {
     return 0;

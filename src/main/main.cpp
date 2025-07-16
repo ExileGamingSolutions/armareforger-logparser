@@ -7,7 +7,7 @@ int main() {
   _parseSort.filter(unParsedLogs);
   std::string message = _parseSort.init[0];
 
-  _sock.setMessage(message);
+  _sock.setMessage("!!!END!!!");
 
   std::cout << "SIZE IS: " << sizeof(message) << std::endl;
   std::cout << "SIZE 2 IS: " << sizeof(_parseSort.init[0]) << std::endl;
@@ -21,7 +21,7 @@ int main() {
     }
 
   case 1:
-    if (_sock.sendToServer()) {
+    if (_sock.sendClumpToServer(_parseSort.world)) {
       std::cout << "SENT \n";
       i++;
     }

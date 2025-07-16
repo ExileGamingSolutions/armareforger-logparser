@@ -1,27 +1,44 @@
+#include <arpa/inet.h>
+#include <cmath>
+#include <cstddef>
 #include <cstring>
+#include <errno.h>
 #include <iostream>
 #include <netinet/in.h>
-#include <sys/io.h>
+#include <stddef.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <sys/socket.h>
 #include <sys/un.h>
 #include <unistd.h>
-
 int main() {
-  int client = socket(AF_INET, SOCK_STREAM, 0);
+  int sock = socket(AF_INET, SOCK_STREAM, 0);
 
-  sockaddr_in serve;
+  struct sockaddr_in sockStr;
+  char address[14] = "192.168.50.89";
+  sockStr.sin_family = AF_INET;
+  sockStr.sin_port = htons(2003);
+  sockStr.sin_addr.s_addr = INADDR_ANY;
+  bool end = false;
+  char buffer[4024] = {0};
+  do {
 
-  serve.sin_family = AF_INET;
-  serve.sin_port = htons(2003);
-  serve.sin_addr.s_addr = INADDR_ANY;
+    bind(sock, (struct sockaddr *)&sockStr, sizeof(sockStr));
 
-  connect(client, (struct sockaddr *)&serve, sizeof(serve));
-  const char *m = "PASS";
+    listen(sock, 30);
 
-  send(client, m, strlen(m), 0);
-  std::cout << "RAN\n";
-  if (0 == 1) {
-    close(client);
-    return 0;
-  }
+    int client = accept(sock, nullptr, nullptr);
+    read(client, buffer, sizeof(buffer));
+    // auto x = recv(client, buffer, sizeof(buffer), MSG_DONTWAIT);
+    //    std::cout << x << std::endl;
+    std::cout << buffer << std::endl;
+
+    std::string endClause = "!!!END!!!";
+    if (endClause == buffer) {
+      end = true;
+    }
+  } while (end == false);
+  close(sock);
+  return 0;
 }

@@ -19,7 +19,9 @@ int main() {
   const char *m = "PASS";
 
   send(client, m, strlen(m), 0);
-
-  close(client);
-  return 0;
+  std::cout << "RAN\n";
+  if (0 == 1) {
+    close(client);
+    return 0;
+  }
 }

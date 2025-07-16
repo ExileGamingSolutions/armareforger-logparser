@@ -1,0 +1,3 @@
+/home/zachary/clientSock/Cmake/CMakeFiles/clientSock.dir
+/home/zachary/clientSock/Cmake/CMakeFiles/edit_cache.dir
+/home/zachary/clientSock/Cmake/CMakeFiles/rebuild_cache.dir

@@ -5,9 +5,12 @@ int main() {
   _scan.readFile("test.txt");
   unParsedLogs = _scan.logLines;
   _parseSort.filter(unParsedLogs);
+  std::string message = _parseSort.init[0];
 
-  _sock.setMessage("ccccccccccccccccccccccc");
-  std::cout << _sock.Message << std::endl;
+  _sock.setMessage("!!!END!!!");
+
+  std::cout << "SIZE IS: " << sizeof(message) << std::endl;
+  std::cout << "SIZE 2 IS: " << sizeof(_parseSort.init[0]) << std::endl;
   switch (int i = 0) {
   case 0:
     if (_sock.connectToServer()) {
@@ -18,7 +21,7 @@ int main() {
     }
 
   case 1:
-    if (_sock.sendToServer()) {
+    if (_sock.sendClumpToServer(_parseSort.world)) {
       std::cout << "SENT \n";
       i++;
     }

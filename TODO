@@ -1,5 +1,8 @@
 detail processes
 log watchdog
 figure out how to effectivly remove file contents to ensure no duplicate entries
-socket or unix... to communicate with discord bots or webhook 
-
+secure sockets 
+file transfers 
+log levels 
+line transfer loop 
+continuous file reading and transfer without repeat transfers

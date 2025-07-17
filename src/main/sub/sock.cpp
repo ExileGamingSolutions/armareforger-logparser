@@ -30,13 +30,16 @@ int sock::sendToServer() {
   }
 }
 int sock::sendClumpToServer(std::vector<std::string> messageClump) {
-
+  std::string end = "!!!END!!!";
+  int m;
   for (int i = 0; i < messageClump.size(); i++) {
-    std::this_thread::sleep_for(std::chrono::seconds(5));
+    //   std::this_thread::sleep_for(std::chrono::seconds(5));
+
     std::string msg = messageClump[i];
-    int m = send(link, msg.c_str(), msg.size(), MSG_MORE);
-    std::cout << m << "  " << "sent: " << i << std::endl;
+    m = send(link, msg.c_str(), msg.size(), MSG_MORE);
+    std::cout << m << "  " << "sent: " << i + 1 << "  " << m << std::endl;
   }
+  m = send(link, end.c_str(), end.size(), 0);
   return 1;
 }
 

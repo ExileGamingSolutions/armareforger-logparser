@@ -18,6 +18,7 @@ int main() {
       i++;
     } else {
       i = 0;
+      std::cout << "FAILED TO CONNECT, RETRYING\n";
     }
 
   case 1:
@@ -28,8 +29,8 @@ int main() {
   case 2:
     _sock.closeServerConnect();
   }
-  int x = _sock.connectToServer();
-  int m = _sock.sendToServer();
+  //  int x = _sock.connectToServer();
+  //  int m = _sock.sendToServer();
 
-  _sock.closeServerConnect();
+  // _sock.closeServerConnect();
 }

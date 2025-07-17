@@ -5,6 +5,7 @@
 #include <errno.h>
 #include <iostream>
 #include <netinet/in.h>
+#include <optional>
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -22,18 +23,20 @@ int main() {
   sockStr.sin_addr.s_addr = INADDR_ANY;
   bool end = false;
   char buffer[4024] = {0};
+
   do {
-
     bind(sock, (struct sockaddr *)&sockStr, sizeof(sockStr));
-
     listen(sock, 30);
-
     int client = accept(sock, nullptr, nullptr);
-    read(client, buffer, sizeof(buffer));
-    // auto x = recv(client, buffer, sizeof(buffer), MSG_DONTWAIT);
+    listen(client, 30);
+    // read(client, buffer, sizeof(buffer));
+    recv(client, buffer, sizeof(buffer), 0);
     //    std::cout << x << std::endl;
+
     std::cout << buffer << std::endl;
 
+    // std::cout << sock << std::endl;
+    // std::cout << x << std::endl;
     std::string endClause = "!!!END!!!";
     if (endClause == buffer) {
       end = true;

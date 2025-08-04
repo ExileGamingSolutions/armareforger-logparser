@@ -17,9 +17,10 @@ public:
   std::string getPath();
   std::vector<std::filesystem::path> getDirContents();
 
-private:
   std::filesystem::path compareFileDate(std::filesystem::path path1,
                                         std::filesystem::path path2);
+
+private:
   std::string _fileDirectory;
   std::filesystem::directory_entry _d;
   std::vector<std::filesystem::path> _dirContents;

@@ -3,16 +3,16 @@
 
 std::filesystem::path monitoring::compareFileDate(std::filesystem::path path1,
                                                   std::filesystem::path path2) {
-  /*  std::filesystem::file_time_type time1 =
-        std::filesystem::last_write_time(path1);
-    std::filesystem::file_time_type time2 =
-        std::filesystem::last_write_time(path2);
-    std::filesystem::path selected;
-     if (time1 < time2) {
-       selected = path1;
-     } else {
-       selected = path2;
-     }*/
+  std::filesystem::file_time_type time1 =
+      std::filesystem::last_write_time(path1);
+  std::filesystem::file_time_type time2 =
+      std::filesystem::last_write_time(path2);
+  std::filesystem::path selected;
+  if (time1 < time2) {
+    selected = path1;
+  } else {
+    selected = path2;
+  }
   return path1;
 }
 

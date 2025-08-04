@@ -1,24 +1,24 @@
 
-#include <arpa/inet.h>
+//#include <arpa/inet.h>
 #include <chrono>
 #include <iostream>
-#include <netinet/in.h>
+//#include <netinet/in.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string>
-#include <sys/socket.h>
+//#include <sys/socket.h>
 #include <sys/types.h>
-#include <sys/un.h>
+//#include <sys/un.h>
 #include <thread>
-#include <unistd.h>
+//#include <unistd.h>
 #include <vector>
 
 class sock {
 public:
-  int link = socket(AF_INET, SOCK_STREAM, 0);
-  struct mmsghdr msgg;
+  //int link = socket(AF_INET, SOCK_STREAM, 0);
+  // struct mmsghdr msgg;
 
-  sockaddr_in server;
+  //sockaddr_in server;
   std::string Message;
   int response;
   void setMessage(std::string message);

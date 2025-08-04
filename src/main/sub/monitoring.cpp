@@ -8,7 +8,11 @@ std::filesystem::path compareFileDate(std::filesystem::path path1,
   std::filesystem::file_time_type time2 =
       std::filesystem::last_write_time(path2);
   std::filesystem::path selected;
-  (time1 < time2) ? selected = path1 : selected = path2;
+  if (time1 < time2) {
+    selected = path1;
+  } else {
+    selected = path2;
+  }
   return selected;
 }
 
@@ -30,7 +34,9 @@ void monitoring::watcher() {
 void monitoring::fileList() {
   for (const auto &entry :
        std::filesystem::directory_iterator(_fileDirectory)) {
-    _dirContents.push_back(entry.path());
+    std::filesystem::path p =
+        std::string(_fileDirectory) + "/" + std::string(entry.path());
+    _dirContents.push_back(p);
   };
 }
 void monitoring::setDirectory(std::string PATH) {
@@ -45,12 +51,15 @@ void monitoring::setDirectory(std::string PATH) {
   };
 }
 std::string monitoring::getDirectory() { return _fileDirectory; }
+
 std::filesystem::path monitoring::selectFile() {
   std::filesystem::path newestFile = _dirContents[0];
   if (_dirContents.size() > 1) {
     for (int i = 0; i < _dirContents.size(); i++) {
-      if (compareFileDate(newestFile, _dirContents[i]) != newestFile)
-        newestFile = _dirContents[i];
+      //      if (monitoring::compareFileDate(newestFile, _dirContents[i]) !=
+      ///        newestFile)
+      //   newestFile = _dirContents[i];
+      newestFile = compareFileDate(newestFile, _dirContents[i]);
     }
   }
   return newestFile;

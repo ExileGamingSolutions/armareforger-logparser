@@ -1,7 +1,8 @@
 #include "sub/monitoring.hpp"
-/*
-std::filesystem::path _compareFileDate(std::filesystem::path path1,
-                                       std::filesystem::path path2) {
+#include <filesystem>
+
+std::filesystem::path compareFileDate(std::filesystem::path path1,
+                                      std::filesystem::path path2) {
   std::filesystem::file_time_type time1 =
       std::filesystem::last_write_time(path1);
   std::filesystem::file_time_type time2 =
@@ -12,12 +13,12 @@ std::filesystem::path _compareFileDate(std::filesystem::path path1,
 }
 // this functions should be continously ran to check for directory changes
 void monitoring::watcher() {
-  if (selectFile(_dirContents) != currentPath) {
+  if (selectFile() != currentPath) {
     // wait 5 minutes before checking again
     std::this_thread::sleep_for(std::chrono::seconds(300));
     watcher();
   } else {
-    currentPath = selectFile(_dirContents);
+    currentPath = selectFile();
   };
 }
 void monitoring::fileList() {
@@ -38,15 +39,14 @@ void monitoring::setDirectory(std::string PATH) {
   };
 }
 std::string monitoring::getDirectory() { return _fileDirectory; }
-std::filesystem::path
-monitoring::selectFile(std::vector<std::filesystem::path> dirContents) {
-  std::filesystem::path newestFile = dirContents[0];
-  if (dirContents.size() > 1) {
-    for (int i = 1; i < dirContents.size(); i++) {
-      if (_compareFileDate(newestFile, dirContents[i]) != newestFile)
-        newestFile = dirContents[i];
+std::filesystem::path monitoring::selectFile() {
+  std::filesystem::path newestFile = _dirContents[0];
+  if (_dirContents.size() > 1) {
+    for (int i = 0; i < _dirContents.size(); i++) {
+      if (compareFileDate(newestFile, _dirContents[i]) != newestFile)
+        newestFile = _dirContents[i];
     }
   }
   return newestFile;
 }
-std::string monitoring::getPath() { return currentPath.string(); }*/
+std::string monitoring::getPath() { return currentPath.string(); }

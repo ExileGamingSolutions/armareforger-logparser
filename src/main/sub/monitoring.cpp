@@ -11,15 +11,22 @@ std::filesystem::path compareFileDate(std::filesystem::path path1,
   (time1 < time2) ? selected = path1 : selected = path2;
   return selected;
 }
+
+void monitoring::Start() { start = true; }
+void monitoring::Stop() { start = false; }
+bool monitoring::getState() { return start; }
 // this functions should be continously ran to check for directory changes
 void monitoring::watcher() {
-  if (selectFile() != currentPath) {
-    // wait 5 minutes before checking again
-    std::this_thread::sleep_for(std::chrono::seconds(300));
-    watcher();
-  } else {
-    currentPath = selectFile();
-  };
+  while (start == true) {
+
+    if (selectFile() != currentPath) {
+      // wait 5 minutes before checking again
+      std::this_thread::sleep_for(std::chrono::seconds(300));
+      watcher();
+    } else {
+      currentPath = selectFile();
+    };
+  }
 }
 void monitoring::fileList() {
   for (const auto &entry :

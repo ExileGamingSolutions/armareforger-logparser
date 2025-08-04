@@ -9,6 +9,9 @@ public:
   void watcher();
   void fileList();
   void setDirectory(std::string PATH);
+  bool getState();
+  void Start();
+  void Stop();
   std::filesystem::path selectFile();
   std::string getDirectory();
   std::string getPath();
@@ -21,4 +24,5 @@ private:
   std::filesystem::directory_entry _d;
   std::vector<std::filesystem::path> _dirContents;
   std::filesystem::path currentPath;
+  bool start = 0;
 };

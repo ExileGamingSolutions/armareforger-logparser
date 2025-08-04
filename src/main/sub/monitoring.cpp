@@ -18,7 +18,6 @@ bool monitoring::getState() { return start; }
 // this functions should be continously ran to check for directory changes
 void monitoring::watcher() {
   while (start == true) {
-
     if (selectFile() != currentPath) {
       // wait 5 minutes before checking again
       std::this_thread::sleep_for(std::chrono::seconds(300));

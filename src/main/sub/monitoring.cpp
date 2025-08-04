@@ -1,19 +1,19 @@
 #include "sub/monitoring.hpp"
 #include <filesystem>
 
-std::filesystem::path compareFileDate(std::filesystem::path path1,
-                                      std::filesystem::path path2) {
-  std::filesystem::file_time_type time1 =
-      std::filesystem::last_write_time(path1);
-  std::filesystem::file_time_type time2 =
-      std::filesystem::last_write_time(path2);
-  std::filesystem::path selected;
-  if (time1 < time2) {
-    selected = path1;
-  } else {
-    selected = path2;
-  }
-  return selected;
+std::filesystem::path monitoring::compareFileDate(std::filesystem::path path1,
+                                                  std::filesystem::path path2) {
+  /*  std::filesystem::file_time_type time1 =
+        std::filesystem::last_write_time(path1);
+    std::filesystem::file_time_type time2 =
+        std::filesystem::last_write_time(path2);
+    std::filesystem::path selected;
+     if (time1 < time2) {
+       selected = path1;
+     } else {
+       selected = path2;
+     }*/
+  return path1;
 }
 
 void monitoring::Start() { start = true; }
@@ -56,10 +56,9 @@ std::filesystem::path monitoring::selectFile() {
   std::filesystem::path newestFile = _dirContents[0];
   if (_dirContents.size() > 1) {
     for (int i = 0; i < _dirContents.size(); i++) {
-      //      if (monitoring::compareFileDate(newestFile, _dirContents[i]) !=
-      ///        newestFile)
-      //   newestFile = _dirContents[i];
-      newestFile = compareFileDate(newestFile, _dirContents[i]);
+      if (monitoring::compareFileDate(newestFile, _dirContents[i]) !=
+          newestFile)
+        newestFile = _dirContents[i];
     }
   }
   return newestFile;

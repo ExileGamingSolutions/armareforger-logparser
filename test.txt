@@ -1,1 +1,1 @@
-cmake/test.txt
+/home/zachary/armareforger-logparser/cmake/test.txt

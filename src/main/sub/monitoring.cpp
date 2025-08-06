@@ -1,29 +1,42 @@
 #include "sub/monitoring.hpp"
-/*
-std::filesystem::path _compareFileDate(std::filesystem::path path1,
-                                       std::filesystem::path path2) {
+#include <filesystem>
+
+std::filesystem::path monitoring::compareFileDate(std::filesystem::path path1,
+                                                  std::filesystem::path path2) {
   std::filesystem::file_time_type time1 =
       std::filesystem::last_write_time(path1);
   std::filesystem::file_time_type time2 =
       std::filesystem::last_write_time(path2);
   std::filesystem::path selected;
-  (time1 < time2) ? selected = path1 : selected = path2;
-  return selected;
+  if (time1 < time2) {
+    selected = path1;
+  } else {
+    selected = path2;
+  }
+  return path1;
 }
+
+void monitoring::Start() { start = true; }
+void monitoring::Stop() { start = false; }
+bool monitoring::getState() { return start; }
 // this functions should be continously ran to check for directory changes
 void monitoring::watcher() {
-  if (selectFile(_dirContents) != currentPath) {
-    // wait 5 minutes before checking again
-    std::this_thread::sleep_for(std::chrono::seconds(300));
-    watcher();
-  } else {
-    currentPath = selectFile(_dirContents);
-  };
+  while (start == true) {
+    if (selectFile() != currentPath) {
+      // wait 5 minutes before checking again
+      std::this_thread::sleep_for(std::chrono::seconds(300));
+      watcher();
+    } else {
+      currentPath = selectFile();
+    };
+  }
 }
 void monitoring::fileList() {
   for (const auto &entry :
        std::filesystem::directory_iterator(_fileDirectory)) {
-    _dirContents.push_back(entry.path());
+    std::filesystem::path p =
+        std::string(_fileDirectory) + "/" + std::string(entry.path());
+    _dirContents.push_back(p);
   };
 }
 void monitoring::setDirectory(std::string PATH) {
@@ -38,15 +51,16 @@ void monitoring::setDirectory(std::string PATH) {
   };
 }
 std::string monitoring::getDirectory() { return _fileDirectory; }
-std::filesystem::path
-monitoring::selectFile(std::vector<std::filesystem::path> dirContents) {
-  std::filesystem::path newestFile = dirContents[0];
-  if (dirContents.size() > 1) {
-    for (int i = 1; i < dirContents.size(); i++) {
-      if (_compareFileDate(newestFile, dirContents[i]) != newestFile)
-        newestFile = dirContents[i];
+
+std::filesystem::path monitoring::selectFile() {
+  std::filesystem::path newestFile = _dirContents[0];
+  if (_dirContents.size() > 1) {
+    for (int i = 0; i < _dirContents.size(); i++) {
+      if (monitoring::compareFileDate(newestFile, _dirContents[i]) !=
+          newestFile)
+        newestFile = _dirContents[i];
     }
   }
   return newestFile;
 }
-std::string monitoring::getPath() { return currentPath.string(); }*/
+std::string monitoring::getPath() { return currentPath.string(); }

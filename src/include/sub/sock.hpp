@@ -20,7 +20,7 @@ public:
 
   sockaddr_in server;
   std::string Message;
-
+  int response;
   void setMessage(std::string message);
   int connectToServer();
   int sendToServer();

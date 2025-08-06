@@ -19,6 +19,7 @@ std::filesystem::path monitoring::compareFileDate(std::filesystem::path path1,
 void monitoring::Start() { start = true; }
 void monitoring::Stop() { start = false; }
 bool monitoring::getState() { return start; }
+
 // this functions should be continously ran to check for directory changes
 void monitoring::watcher() {
   while (start == true) {
@@ -31,6 +32,7 @@ void monitoring::watcher() {
     };
   }
 }
+
 void monitoring::fileList() {
   for (const auto &entry :
        std::filesystem::directory_iterator(_fileDirectory)) {
@@ -39,6 +41,7 @@ void monitoring::fileList() {
     _dirContents.push_back(p);
   };
 }
+
 void monitoring::setDirectory(std::string PATH) {
   _fileDirectory = PATH;
   try {
@@ -50,6 +53,7 @@ void monitoring::setDirectory(std::string PATH) {
     std::cout << "DIRECTORY ERROR\n";
   };
 }
+
 std::string monitoring::getDirectory() { return _fileDirectory; }
 
 std::filesystem::path monitoring::selectFile() {

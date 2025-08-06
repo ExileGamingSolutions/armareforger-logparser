@@ -1,6 +1,5 @@
 #include "sub/scan.hpp"
 void scan::readFile(std::string file) {
-  std::stringstream ss(x);
   try {
     read.open(file);
     write.open(file);
@@ -26,9 +25,6 @@ void scan::readFile(std::string file) {
       x.erase();
     }
   }
-  // delete file when scan is done then remake file to clear out content
-  //  def a better way to do this but i wanna see how well this works..
-  //:  std::remove(file.c_str());
   read.close();
 }
 std::vector<std::string> scan::getLog() { return logLines; }

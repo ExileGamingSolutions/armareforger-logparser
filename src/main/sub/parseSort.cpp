@@ -1,8 +1,8 @@
 #include "sub/parseSort.hpp"
 
 void parseSort::filter(std::vector<std::string> param) {
-  std::string a;
-  std::stringstream ss(a);
+  std::string _buffer;
+  std::stringstream ss(_buffer);
   for (int i = 0; i < param.size() - 1; i++) {
     parseSort::_sortedLine _selected = _NULL;
     std::string placeH = param[i];
